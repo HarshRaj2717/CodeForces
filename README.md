@@ -1,2 +1,2 @@
-# CodeForces-Python-PVT
-Solutions to CodeForces problems written in Python.
+# CodeForces-PVT
+Solutions to CodeForces problems.
