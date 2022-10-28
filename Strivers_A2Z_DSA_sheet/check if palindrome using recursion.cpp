@@ -4,10 +4,10 @@ using namespace std;
 
 bool isPalindrome(string s, int i=0){
     if(i<s.size()-1-i){
-        if(tolower(s[i]) != tolower(s[s.size()-1-i])){
+        if((tolower(s[i])) != tolower((s[s.size()-1-i]))){
             return false;
         }
-        isPalindrome(s, i+1);
+        return isPalindrome(s, i+1);
     }
     return true;
 }
