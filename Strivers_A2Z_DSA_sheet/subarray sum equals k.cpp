@@ -5,18 +5,16 @@
 using namespace std;
 
 int subarraySum(vector<int>& nums, int k){
-    sort(nums.begin(), nums.end());
-    int i=0, count=0;
-    while(i < nums.size()){
-        int temp=0, j=0;
-        while(j < nums.size() && temp + nums[j] <= k){
+    int count=0;
+    for(int i=0; i < nums.size(); i++){
+        int j=i, temp=0;
+        while(j < nums.size()){
             if(temp + nums[j] == k){
-                count += 1;
+                count++;
             }
             temp += nums[j];
             j++;
         }
-        i++;
     }
     return count;
 }
