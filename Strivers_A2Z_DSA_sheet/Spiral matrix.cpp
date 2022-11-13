@@ -1,4 +1,4 @@
-// Problem : https://leetcode.com/problems/rotate-image/
+// Problem : https://leetcode.com/problems/spiral-matrix/
 
 #include<bits/stdc++.h>
 
