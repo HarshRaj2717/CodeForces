@@ -5,6 +5,8 @@
 using namespace std;
 
 int missing(vector<int>& nums){
+    // The intution is to do [n*(n+1)/2 - sum of all elements of nums] hence we will have the missing number left only.
+    // accumulate is a function which adds up all the numbers in a given range to an initial sum (here initial sum = 0).
     return nums.size() * (nums.size() + 1) / 2 - accumulate(nums.begin(), nums.end(), 0);
 }
 
