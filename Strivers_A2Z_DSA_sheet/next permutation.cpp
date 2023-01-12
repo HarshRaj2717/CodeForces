@@ -14,7 +14,7 @@ void nextPermutation(vector<int>& nums) {
         }
     }
     if(!check){
-        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.end()); // Can use sort also here instead of reverse, if you are seeing this then think about why reverse is also working.
     }
     else{
         for(j=nums.size()-1; j>i+1; j--){
@@ -24,7 +24,7 @@ void nextPermutation(vector<int>& nums) {
             }
         }
         swap(nums[i], nums[j]);
-        reverse(nums.begin()+i+1, nums.end());
+        reverse(nums.begin()+i+1, nums.end()); // Can use sort also here instead of reverse, if you are seeing this then think about why reverse is also working.
     }
 }
 
