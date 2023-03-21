@@ -67,7 +67,7 @@ ListNode *middleNode(ListNode *head)
 
 int main()
 {
-    creater();
+    creater(); // Takes number of elements to insert into the list from user, then takes those elements input from user too
 
     ListNode *ptr = middleNode(head);
 
