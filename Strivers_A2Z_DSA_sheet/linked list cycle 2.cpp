@@ -1,4 +1,5 @@
 // Problem : https://leetcode.com/problems/linked-list-cycle-ii/
+// Explanation (with maths) : https://youtu.be/QfbOhn0WZ88
 
 #include <bits/stdc++.h>
 
