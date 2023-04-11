@@ -1,3 +1,7 @@
+// Problem : https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+// ** It's easier in O(n) time and multiple passes
+// ** But, a bit of trick is needed for solving in one pass
+
 // Problem : https://leetcode.com/problems/reverse-nodes-in-k-group/
 // Explanation : Available in my written notes
 
@@ -53,47 +57,34 @@ void deleter()
     }
 }
 
-ListNode* reverser(ListNode* prev, ListNode* s, ListNode* e, ListNode* head){
-    ListNode* s_save = s;
-    ListNode* prev_save = prev;
-    while(s != e){
-        ListNode *temp = s->next;
-        s->next = prev;
-        prev = s;
-        s = temp;
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode* ptr_prev = NULL;
+    ListNode* ptr = head;
+    ListNode* temp = head;
+    while(n){
+        temp = temp->next;
+        --n;
     }
-    s_save->next = e->next;
-    e->next = prev;
-    if(prev_save) prev_save->next = e;
-    else head = e;
-    return head;
-}
 
-ListNode* reverseKGroup(ListNode* head, int k) {
-    if(k == 1) return head;
-    ListNode* s = head;
-    ListNode* e = head;
-    ListNode* prev = NULL;
-    while(e){
-        for(int i = 0; i < k - 1 && e != NULL; i++) e = e->next;
-        if(!e) break;
-        ListNode* prev_save = s;
-        ListNode* save = e->next;
-        head = reverser(prev, s, e, head);
-        prev = prev_save;
-        s = save;
-        e = save;
+    while(temp){
+        temp = temp->next;
+        ptr_prev = ptr;
+        ptr = ptr->next;
     }
+
+    if(ptr_prev) ptr_prev->next = ptr->next;
+    else head = head->next;
+
     return head;
 }
 
 int main()
 {
     creater(); // Takes number of elements to insert into the list from user, then takes those elements input from user too
-    int k;
-    cin >> k;
+    int n;
+    cin >> n;
 
-    head = reverseKGroup(head, k);
+    head = removeNthFromEnd(head, n);
 
     printer();
     deleter();
