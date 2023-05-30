@@ -5,32 +5,40 @@
 
 using namespace std;
 
-
-int findDuplicate(vector<int>& nums) {
+int findDuplicate(vector<int> &nums)
+{
     int ans = 0;
-    for(int i = 0; i < 21; i++){
+    for (int i = 0; i < 21; i++)
+    {
         int temp = 1 << i;
-        if(temp > nums.size()) break;
+        if (temp > nums.size())
+            break;
 
         int actual = 0;
         int expected = 0;
-        for(int j = 0; j < nums.size(); j++){
+        for (int j = 0; j < nums.size(); j++)
+        {
             // actual number of 1s
-            if(nums[j] & temp) actual++;
+            if (nums[j] & temp)
+                actual++;
             // expected number of 1s
-            if(j & temp) expected++;
+            if (j & temp)
+                expected++;
         }
-        if(actual > expected) ans += temp;
+        if (actual > expected)
+            ans += temp;
     }
     return ans;
 }
 
-int main(){
+int main()
+{
     int n;
     cin >> n;
     vector<int> nums(n);
-    for(int i = 0; i < n; i++){
-        cin >> nums[i]; 
+    for (int i = 0; i < n; i++)
+    {
+        cin >> nums[i];
     }
 
     cout << findDuplicate(nums);
