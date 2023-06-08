@@ -36,6 +36,7 @@ int main()
     vector<vector<int>> ans;
 
     ans = subsets(nums);
+
     for (auto i : ans)
     {
         for (auto j : i)
@@ -44,6 +45,5 @@ int main()
         }
         cout << endl;
     }
-
     return 0;
 }
