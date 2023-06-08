@@ -28,9 +28,25 @@ void solver_using_map(vector<int> &nums, int left, vector<int> cur = {}, unorder
     }
 }
 
+void solver_using_swap(vector<int> nums, int cur_index)
+{
+    if (cur_index == nums.size() - 1)
+    {
+        ans.push_back(nums);
+        return;
+    }
+    for (int i = cur_index; i < nums.size(); i++)
+    {
+        swap(nums[i], nums[cur_index]);
+        solver_using_swap(nums, cur_index + 1);
+        swap(nums[i], nums[cur_index]);
+    }
+}
+
 vector<vector<int>> permute(vector<int> &nums)
 {
-    solver_using_map(nums, nums.size());
+    // solver_using_map(nums, nums.size());
+    solver_using_swap(nums, 0); // This has better space complexity.
     return ans;
 }
 
