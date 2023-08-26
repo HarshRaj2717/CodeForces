@@ -38,6 +38,9 @@ vector<int> solver(int x, int y, int n)
     // (which is same for all elements or same for all elements after first element if offset was not 0)
     for (int i = 1; i < n; i++)
     {
+        if (difference_elements_val <= 0) {
+            return {};
+        }
         difference_elements_count -= 1;
         ans[i] += ans[i - 1] + difference_elements_val + difference_elements_count;
         difference_elements_val -= 1;
