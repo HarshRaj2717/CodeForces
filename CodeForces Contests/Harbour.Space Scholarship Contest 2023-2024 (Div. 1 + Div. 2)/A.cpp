@@ -1,11 +1,9 @@
-// --------------------------------
-// THIS IS NOT THE CORRECT SOLUTION.
-// --------------------------------
 #include <bits/stdc++.h>
 
 using namespace std;
 
-vector<int> solver(int x, int y, int n)
+// Made during contest
+vector<int> solverAttempt1(int x, int y, int n)
 {
     vector<int> ans(n, 0);
     ans[0] = x;
@@ -38,7 +36,8 @@ vector<int> solver(int x, int y, int n)
     // (which is same for all elements or same for all elements after first element if offset was not 0)
     for (int i = 1; i < n; i++)
     {
-        if (difference_elements_val <= 0) {
+        if (difference_elements_val <= 0)
+        {
             return {};
         }
         difference_elements_count -= 1;
@@ -47,6 +46,29 @@ vector<int> solver(int x, int y, int n)
     }
 
     return ans[n - 1] == y ? ans : vector<int>();
+}
+
+// Made after contest
+vector<int> solver(int x, int y, int n)
+{
+    // `(n * (n - 1) / 2)` is calculating sum (for edge case) of differences that can be placed in between x & y
+    // basically it calculates the sum of all numbers from 1 to (n-1)
+    // this sum calculates the sum of differences for edge case as the end case consists of following difference - (n-1), (n-2), (n-3), ..., 3, 2, 1
+    // this is occuring because of the way we are running `cur_diff` variable
+    // finally we are comparing it with (y-x) which is the available difference between y & x
+    // so the statement becomes - "if avaible_difference < least_possible_differnce then return {}"
+    if((y - x) < (n * (n - 1) / 2)) return {};
+
+    vector<int> ans(n);
+    ans[0] = x;
+    ans[n - 1] = y;
+    int cur_diff = 1;
+    for (int i = n - 2; i >= 1; i--)
+    {
+        ans[i] = ans[i+1] - cur_diff;
+        cur_diff++;
+    }
+    return ans;
 }
 
 int main()
