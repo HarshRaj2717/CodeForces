@@ -6,15 +6,13 @@ using namespace std;
 
 int subarraySum(vector<int>& nums, int k){
     int count=0;
-    for(int i=0; i < nums.size(); i++){
-        int j=i, temp=0;
-        while(j < nums.size()){
-            if(temp + nums[j] == k){
-                count++;
-            }
-            temp += nums[j];
-            j++;
-        }
+    int sum = 0;
+    unordered_map <int, int> presum;
+    presum[0] = 1;
+    for(int i:nums){
+        sum += i;
+        if(presum[sum - k]) count += presum[sum-k];
+        presum[sum]++;
     }
     return count;
 }
