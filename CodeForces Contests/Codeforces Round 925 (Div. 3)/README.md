@@ -1,0 +1,1 @@
+Contest link: https://codeforces.com/contest/1931
